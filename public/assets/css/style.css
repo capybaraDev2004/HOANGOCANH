@@ -1,0 +1,635 @@
+/* =====================================
+   Custom CSS cho Siin Store
+   ===================================== */
+
+:root {
+    --primary-color: #f43f5e;
+    --secondary-color: #ec4899;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   Smooth Scrolling
+   ===================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =====================================
+   Loading Animation
+   ===================================== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* =====================================
+   Custom Scrollbar
+   ===================================== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* =====================================
+   Hero Section
+   ===================================== */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.8) 0%, rgba(236, 72, 153, 0.6) 100%);
+}
+
+/* =====================================
+   Buttons
+   ===================================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(244, 63, 94, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    padding: 12px 32px;
+    border-radius: 50px;
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* =====================================
+   Product Cards
+   ===================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+    }
+}
+
+/* =====================================
+   Category Cards
+   ===================================== */
+.category-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 200px;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-card .category-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* =====================================
+   Badge & Tags
+   ===================================== */
+.badge-new {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-sale {
+    background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-hot {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* =====================================
+   Rating Stars
+   ===================================== */
+.rating-stars {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.rating-stars i {
+    color: #fbbf24;
+    font-size: 14px;
+}
+
+/* =====================================
+   Breadcrumb
+   ===================================== */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+}
+
+.breadcrumb a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb .separator {
+    color: #d1d5db;
+}
+
+/* =====================================
+   Pagination
+   ===================================== */
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a,
+.pagination span {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #6b7280;
+    transition: all 0.3s;
+}
+
+.pagination a:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination .active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* =====================================
+   Modal
+   ===================================== */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+.modal-backdrop.active {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 16px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.modal.active {
+    display: block;
+}
+
+/* =====================================
+   Toast Notification
+   ===================================== */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast.success {
+    border-left: 4px solid var(--success-color);
+}
+
+.toast.error {
+    border-left: 4px solid var(--danger-color);
+}
+
+.toast.warning {
+    border-left: 4px solid var(--warning-color);
+}
+
+/* =====================================
+   Container Padding - Override Tailwind px-4
+   ===================================== */
+.container.px-4,
+.container {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+
+/* =====================================
+   Responsive Design
+   ===================================== */
+@media (max-width: 1024px) {
+    .container.px-4,
+    .container {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .container.px-4,
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-slide {
+        min-height: 300px;
+    }
+    
+    .category-card {
+        height: 150px;
+    }
+}
+
+/* =====================================
+   Utilities
+   ===================================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-primary {
+    box-shadow: 0 10px 30px rgba(244, 63, 94, 0.2);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================
+   Footer Icon Alignment - Icon to hơn và căn giữa trong div
+   ===================================== */
+footer .container ul li > div[class*="w-10"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+}
+
+footer .container ul li > div[class*="w-10"] i {
+    display: inline-block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    font-size: 18px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* =====================================
+   Footer Grid Spacing - Giảm khoảng cách giữa các cột
+   ===================================== */
+.footer-main-content {
+    max-width: 100% !important;
+    padding-left: 1rem !important; /* 16px thay vì 50px */
+    padding-right: 1rem !important; /* 16px thay vì 50px */
+}
+
+@media (min-width: 768px) {
+    .footer-main-content {
+        padding-left: 1.5rem !important; /* 24px trên tablet */
+        padding-right: 1.5rem !important; /* 24px trên tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-main-content {
+        padding-left: 2rem !important; /* 32px trên desktop */
+        padding-right: 2rem !important; /* 32px trên desktop */
+    }
+}
+
+.footer-grid {
+    gap: 0 !important;
+    column-gap: 0.5rem !important; /* 8px - khoảng cách ngang nhỏ */
+    row-gap: 1rem !important; /* 16px cho khoảng cách dọc khi responsive */
+    display: grid !important;
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        column-gap: 0.5rem !important; /* 8px trên tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        column-gap: 0.5rem !important; /* 8px trên desktop - đều nhau */
+    }
+}
+
+/* Đảm bảo các column không có margin/padding thừa và căn đều */
+.footer-grid > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* =====================================
+   Navigation Dropdown Menu
+   ===================================== */
+.main-nav {
+    height: 64px;
+}
+
+.main-nav > li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown Menu Container */
+.nav-dropdown-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    margin-top: 0; /* bỏ khoảng hở để không bị mất hover */
+    width: 224px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 4px 0;
+    pointer-events: none;
+}
+
+/* Caret (mũi tên trỏ lên) */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Show dropdown on hover */
+.group:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Base state cho trigger: cố định chiều cao, bỏ padding để không giãn */
+.nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%; /* phủ toàn bộ khung li */
+    padding: 0 14px; /* giữ kích thước ổn định và lấp đầy li */
+    height: 100%;
+    line-height: 64px; /* khớp chiều cao ul */
+    box-sizing: border-box;
+    border-radius: 0;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Hover state - không thay đổi kích thước */
+.group:hover .nav-dropdown-trigger {
+    background-color: #ec4899;
+    color: white !important;
+    padding: 0 14px;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+}
+
+.group:hover .nav-dropdown-trigger i {
+    color: white !important;
+}
+
+/* Đảm bảo dropdown vẫn hiển thị khi hover vào chính nó */
+.nav-dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Styling cho các item trong dropdown */
+.nav-dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #4b5563;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+    background-color: #fce7f3;
+    color: #ec4899;
+}
+

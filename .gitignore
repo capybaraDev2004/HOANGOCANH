@@ -1,0 +1,51 @@
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PHP
+vendor/
+composer.lock
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Logs
+*.log
+logs/
+error_log
+
+# Cache
+cache/
+*.cache
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment
+.env
+.env.local
+
+# Uploads
+uploads/
+public/uploads/
+
+# Node modules (if using npm for frontend tools)
+node_modules/
+package-lock.json
+
+# Build files
+dist/
+build/
+
+# OS
+Thumbs.db
+.DS_Store
+

@@ -1,0 +1,27 @@
+Thư mục này chứa hình ảnh cho website.
+
+Cấu trúc khuyến nghị:
+├── images/
+    ├── products/          # Hình sản phẩm (800x800px)
+    │   ├── product-1.jpg
+    │   ├── product-2.jpg
+    │   └── ...
+    ├── blog/             # Hình blog (1200x600px)
+    │   ├── blog-1.jpg
+    │   ├── blog-2.jpg
+    │   └── ...
+    ├── hero-bg.jpg       # Background hero (1920x600px)
+    ├── logo.png          # Logo website
+    └── favicon.ico       # Favicon
+
+Ghi chú:
+- Sử dụng định dạng JPG cho ảnh sản phẩm, blog
+- Sử dụng PNG cho logo (có background trong suốt)
+- Tối ưu hóa hình ảnh trước khi upload để tăng tốc độ tải trang
+- Đặt tên file không dấu, viết thường, dùng dấu gạch ngang (-)
+
+Công cụ tối ưu hình ảnh khuyến nghị:
+- TinyPNG (https://tinypng.com/)
+- ImageOptim (cho macOS)
+- Photoshop (Save for Web)
+
