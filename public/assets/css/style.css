@@ -898,6 +898,43 @@ html, body {
 }
 
 /* =====================================
+   Cart Page Styling
+   ===================================== */
+.cart-card {
+    border-radius: 18px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.cart-header {
+    background: linear-gradient(90deg, #fff5f7 0%, #fff1f2 100%);
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.cart-item-row {
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cart-item-row:hover {
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.cart-price {
+    color: #f43f5e;
+    font-weight: 700;
+}
+
+.cart-total {
+    color: #f43f5e;
+    font-weight: 800;
+}
+
+.cart-qty-input input {
+    width: 3rem;
+}
+
+/* =====================================
    Header Layout - Logo, Title, Search
    ===================================== */
 .header-content {

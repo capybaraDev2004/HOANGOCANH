@@ -29,14 +29,9 @@ include '../includes/header.php';
                 <i class="fas fa-shopping-cart text-rose-500 mr-3"></i>
                 Giỏ hàng của bạn
             </h1>
-            <div class="flex gap-2">
-                <button onclick="debugCart()" class="bg-gray-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-600 transition">
-                    <i class="fas fa-bug mr-1"></i> Debug
-                </button>
-                <button onclick="loadCartFromStorage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition">
-                    <i class="fas fa-sync mr-1"></i> Reload
-                </button>
-            </div>
+            <button onclick="renderCartPageFromStorage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition shadow-sm">
+                <i class="fas fa-sync mr-1"></i> Reload
+            </button>
         </div>
 
         <!-- Empty Cart (sẽ được ẩn nếu có sản phẩm) -->
@@ -52,106 +47,35 @@ include '../includes/header.php';
         
         <!-- Cart Content -->
         <div id="cart-content" class="hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Cart Items -->
-                <div class="lg:col-span-2">
-                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <!-- Cart Header -->
-                        <div class="bg-gray-50 px-6 py-4 border-b">
-                            <div class="grid grid-cols-12 gap-4 font-semibold text-gray-700">
-                                <div class="col-span-6">Sản phẩm</div>
-                                <div class="col-span-2 text-center">Đơn giá</div>
-                                <div class="col-span-2 text-center">Số lượng</div>
-                                <div class="col-span-2 text-right">Tổng</div>
-                            </div>
-                        </div>
-
-                        <!-- Cart Items -->
-                        <div id="cart-items">
-                            <!-- Sẽ được load từ localStorage bằng JavaScript -->
-                        </div>
-
-                        <!-- Cart Actions -->
-                        <div class="p-6 bg-gray-50">
-                            <div class="flex justify-between items-center">
-                                <a href="<?php echo APP_URL; ?>/shop.php" 
-                                   class="text-rose-500 font-semibold hover:text-rose-600 transition">
-                                    <i class="fas fa-arrow-left mr-2"></i>
-                                    Tiếp tục mua sắm
-                                </a>
-                                <button onclick="clearCart()" 
-                                        class="text-red-500 font-semibold hover:text-red-600 transition">
-                                    <i class="fas fa-trash mr-2"></i>
-                                    Xóa giỏ hàng
-                                </button>
-                            </div>
-                        </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 cart-card">
+                <!-- Cart Header -->
+                <div class="bg-gradient-to-r from-rose-50 to-pink-50 px-6 py-4 border-b border-gray-100 cart-header">
+                    <div class="grid grid-cols-12 gap-4 font-semibold text-gray-700 text-sm uppercase tracking-wide">
+                        <div class="col-span-6">Sản phẩm</div>
+                        <div class="col-span-2 text-center">Đơn giá</div>
+                        <div class="col-span-2 text-center">Số lượng</div>
+                        <div class="col-span-2 text-right">Tổng</div>
                     </div>
                 </div>
 
-                <!-- Cart Summary -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
-                        <h3 class="text-xl font-bold mb-6">Tổng đơn hàng</h3>
+                <!-- Cart Items -->
+                <div id="cart-items" class="divide-y divide-gray-100">
+                    <!-- Sẽ được load từ localStorage bằng JavaScript -->
+                </div>
 
-                        <!-- Coupon -->
-                        <?php /* Tạm thời tắt chức năng mã giảm giá
-                        <div class="mb-6">
-                            <label class="block text-sm font-semibold mb-2">Mã giảm giá</label>
-                            <div class="flex gap-2">
-                                <input type="text" 
-                                       id="coupon-code"
-                                       placeholder="Nhập mã..." 
-                                       class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500">
-                                <button onclick="applyCoupon()" 
-                                        class="bg-rose-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-rose-600 transition">
-                                    Áp dụng
-                                </button>
-                            </div>
-                            <p class="text-xs text-gray-500 mt-2">
-                                <i class="fas fa-tag mr-1"></i>
-                                Nhập mã "Uudai5" giảm 5%
-                            </p>
-                        </div>
-                        */ ?>
-
-                        <!-- Price Details -->
-                        <div id="cart-summary" class="space-y-3 mb-6">
-                            <!-- Sẽ được cập nhật bằng JavaScript -->
-                        </div>
-
-                        <!-- Checkout Button -->
-                        <?php /* Tạm thời tắt chức năng thanh toán
-                        <button onclick="checkout()" 
-                                class="w-full bg-gradient-to-r from-rose-500 to-pink-500 text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all hover:-translate-y-1 mb-3">
-                            <i class="fas fa-credit-card mr-2"></i>
-                            Tiến hành thanh toán
+                <!-- Cart Actions -->
+                <div class="p-6 bg-gray-50 border-t border-gray-100">
+                    <div class="flex justify-between items-center flex-wrap gap-3">
+                        <a href="<?php echo APP_URL; ?>/shop.php" 
+                           class="text-rose-500 font-semibold hover:text-rose-600 transition">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Tiếp tục mua sắm
+                        </a>
+                        <button onclick="clearCart()" 
+                                class="text-red-500 font-semibold hover:text-red-600 transition">
+                            <i class="fas fa-trash mr-2"></i>
+                            Xóa giỏ hàng
                         </button>
-
-                        <div class="text-center text-sm text-gray-600">
-                            <i class="fas fa-shield-alt text-green-500 mr-1"></i>
-                            Thanh toán an toàn & bảo mật
-                        </div>
-
-                        <!-- Payment Methods -->
-                        <div class="mt-6 pt-6 border-t">
-                            <p class="text-sm font-semibold mb-3">Chúng tôi chấp nhận:</p>
-                            <div class="grid grid-cols-3 gap-2">
-                                <div class="border rounded p-2 text-center">
-                                    <i class="fas fa-money-bill-wave text-green-600 text-2xl"></i>
-                                    <p class="text-xs mt-1">Tiền mặt</p>
-                                </div>
-                                <div class="border rounded p-2 text-center">
-                                    <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
-                                    <p class="text-xs mt-1">Thẻ</p>
-                                </div>
-                                <div class="border rounded p-2 text-center">
-                                    <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
-                                    <p class="text-xs mt-1">Ví điện tử</p>
-                                </div>
-                            </div>
-                        </div>
-                        */ ?>
                     </div>
                 </div>
             </div>
@@ -179,10 +103,10 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// Load và render giỏ hàng từ localStorage
-function loadCartFromStorage() {
+// Load và render giỏ hàng từ localStorage (tên riêng để không đè lên main.js)
+function renderCartPageFromStorage() {
     try {
-        console.log('=== loadCartFromStorage START ===');
+        console.log('=== renderCartPageFromStorage START ===');
         
         const cartItemsEl = document.getElementById('cart-items');
         const emptyCartEl = document.getElementById('empty-cart');
@@ -318,7 +242,7 @@ function loadCartFromStorage() {
                 const productImage = escapeHtml(product.image || imagesUrl + '/products/default.jpg');
                 
                 html += `
-                    <div class="cart-item p-4 sm:p-6 border-b hover:bg-gray-50 transition" data-product-id="${productId}">
+                    <div class="cart-item cart-item-row p-4 sm:p-5" data-product-id="${productId}">
                         <div class="grid grid-cols-12 gap-3 sm:gap-4 items-center">
                             <div class="col-span-12 sm:col-span-6 flex gap-3 sm:gap-4 items-start">
                                 <div class="relative shrink-0">
@@ -333,7 +257,7 @@ function loadCartFromStorage() {
                                 </div>
                             </div>
                             <div class="col-span-4 sm:col-span-2 text-center sm:text-left">
-                                <span class="font-semibold text-rose-500 block">${formatCurrency(price)}</span>
+                                <span class="font-semibold text-rose-500 cart-price block">${formatCurrency(price)}</span>
                             </div>
                             <div class="col-span-4 sm:col-span-2 flex justify-center">
                                 <div class="flex items-center border-2 border-gray-300 rounded-lg">
@@ -343,7 +267,7 @@ function loadCartFromStorage() {
                                 </div>
                             </div>
                             <div class="col-span-4 sm:col-span-2 text-right">
-                                <span class="font-bold text-lg text-gray-800">${formatCurrency(itemTotal)}</span>
+                                <span class="font-bold text-lg text-gray-800 cart-total">${formatCurrency(itemTotal)}</span>
                             </div>
                         </div>
                     </div>
@@ -399,17 +323,11 @@ function loadCartFromStorage() {
         cartItemsEl.style.minHeight = '100px';
         
         console.log('Subtotal:', subtotal);
-        if (typeof updateCartSummary === 'function') {
-            updateCartSummary(subtotal, 0);
-            console.log('✅ Summary updated');
-        } else {
-            console.error('❌ updateCartSummary function not found');
-        }
         
-        console.log('=== loadCartFromStorage END - SUCCESS ===');
+        console.log('=== renderCartPageFromStorage END - SUCCESS ===');
     } catch (e) {
-        console.error('=== loadCartFromStorage END - ERROR ===');
-        console.error('❌ Error in loadCartFromStorage:', e);
+        console.error('=== renderCartPageFromStorage END - ERROR ===');
+        console.error('❌ Error in renderCartPageFromStorage:', e);
         console.error('Stack:', e.stack);
         
         const cartItemsEl = document.getElementById('cart-items');
@@ -573,7 +491,7 @@ window.removeFromCart = function(productId) {
         }
         
         // Reload giỏ hàng
-        loadCartFromStorage();
+        renderCartPageFromStorage();
         
         // Hiển thị thông báo
         if (window.showToast) {
@@ -647,7 +565,7 @@ window.updateCartQuantity = function(productId, quantity) {
         }
         
         // Reload giỏ hàng
-        loadCartFromStorage();
+        renderCartPageFromStorage();
         
         return true;
     } catch (error) {
@@ -686,7 +604,7 @@ window.clearCart = function() {
         }
         
         // Reload giỏ hàng
-        loadCartFromStorage();
+        renderCartPageFromStorage();
         
         if (window.showToast) {
             showToast('Đã xóa tất cả sản phẩm!', 'warning');
@@ -754,7 +672,7 @@ window.clearCart = function() {
         
         // Gọi hàm load giỏ hàng
         try {
-            loadCartFromStorage();
+            renderCartPageFromStorage();
             console.log('✅ Cart loaded successfully');
         } catch (error) {
             console.error('❌ Error loading cart:', error);

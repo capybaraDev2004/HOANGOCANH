@@ -70,17 +70,17 @@ $display_price = $has_sale ? $product['sale_price'] : $product['price'];
             <div class="product-rating mb-2 text-sm">
                 <div class="product-rating-stars-score flex items-center gap-2 mb-1">
                     <div class="product-rating-stars flex items-center text-yellow-400">
-                        <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <?php if ($i <= $product['rating']): ?>
-                                <i class="fas fa-star"></i>
-                            <?php else: ?>
-                                <i class="far fa-star"></i>
-                            <?php endif; ?>
-                        <?php endfor; ?>
-                    </div>
+                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <?php if ($i <= $product['rating']): ?>
+                            <i class="fas fa-star"></i>
+                        <?php else: ?>
+                            <i class="far fa-star"></i>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
                     <span class="product-rating-score text-gray-600">
-                        <?php echo number_format($product['rating'], 1); ?>
-                    </span>
+                    <?php echo number_format($product['rating'], 1); ?>
+                </span>
                 </div>
                 <?php if (isset($product['reviews'])): ?>
                     <div class="product-rating-reviews text-gray-400">
@@ -113,15 +113,15 @@ $display_price = $has_sale ? $product['sale_price'] : $product['price'];
         <!-- Stock Status & Buy Button -->
         <div class="product-stock-buy-wrapper text-sm">
             <div class="product-stock-status">
-                <span class="text-green-600 font-medium">
-                    <i class="fas fa-check-circle mr-1"></i>Còn hàng
-                </span>
+            <span class="text-green-600 font-medium">
+                <i class="fas fa-check-circle mr-1"></i>Còn hàng
+            </span>
             </div>
             <div class="product-buy-button">
-                <button onclick="addToCart(<?php echo $product['id']; ?>, 1, {name: '<?php echo addslashes($product['name']); ?>', slug: '<?php echo $product['slug']; ?>', image: '<?php echo $product['image']; ?>', price: <?php echo $product['price']; ?>, sale_price: <?php echo $product['sale_price'] ? $product['sale_price'] : 'null'; ?>})" 
+            <button onclick="addToCart(<?php echo $product['id']; ?>, 1, {name: '<?php echo addslashes($product['name']); ?>', slug: '<?php echo $product['slug']; ?>', image: '<?php echo $product['image']; ?>', price: <?php echo $product['price']; ?>, sale_price: <?php echo $product['sale_price'] ? $product['sale_price'] : 'null'; ?>})" 
                         class="product-buy-btn text-white font-medium transition-colors">
-                    Mua ngay <i class="fas fa-arrow-right ml-1"></i>
-                </button>
+                Mua ngay <i class="fas fa-arrow-right ml-1"></i>
+            </button>
             </div>
         </div>
     </div>

@@ -109,7 +109,7 @@ include '../includes/header.php';
 
 <!-- Shop Content -->
 <section class="py-8">
-        <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Mobile Filter Toggle + Overlay -->
             <button id="filter-toggle" class="mobile-filter-toggle lg:hidden">
