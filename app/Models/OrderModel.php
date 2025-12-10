@@ -74,5 +74,37 @@ class OrderModel {
         $stmt->bind_param("si", $status, $id);
         return $stmt->execute();
     }
+
+    public function update($id, $data) {
+        $allowedStatus = ['PENDING','CONFIRMED','SHIPPING','COMPLETED','CANCELLED'];
+        $allowedPayment = ['COD','BANKPLUS'];
+
+        $status = in_array($data['status'], $allowedStatus) ? $data['status'] : 'PENDING';
+        $payment = in_array($data['payment_method'], $allowedPayment) ? $data['payment_method'] : 'COD';
+
+        $stmt = $this->db->prepare("
+            UPDATE orders
+            SET customer_name = ?, customer_phone = ?, customer_email = ?, shipping_address = ?, note = ?, payment_method = ?, status = ?
+            WHERE id = ?
+        ");
+        $stmt->bind_param(
+            "sssssssi",
+            $data['customer_name'],
+            $data['customer_phone'],
+            $data['customer_email'],
+            $data['shipping_address'],
+            $data['note'],
+            $payment,
+            $status,
+            $id
+        );
+        return $stmt->execute();
+    }
+
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM orders WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
 }
 

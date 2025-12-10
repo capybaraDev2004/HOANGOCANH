@@ -41,6 +41,10 @@ if (!defined('APP_URL')) {
                     <i class="fas fa-folder"></i>
                     <span>Quản lý Danh mục</span>
                 </a>
+                <a href="<?php echo APP_URL; ?>/admin/orders.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'orders.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-receipt"></i>
+                    <span>Quản lý Đơn hàng</span>
+                </a>
                 <a href="<?php echo APP_URL; ?>/admin/reviews.php" class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'reviews.php' ? 'active' : ''; ?>">
                     <i class="fas fa-star"></i>
                     <span>Quản lý Đánh giá</span>

@@ -28,5 +28,19 @@ class OrderController {
         }
         return ['success' => false, 'message' => 'Có lỗi xảy ra'];
     }
+
+    public function update($id, $data) {
+        if ($this->orderModel->update($id, $data)) {
+            return ['success' => true, 'message' => 'Cập nhật đơn hàng thành công'];
+        }
+        return ['success' => false, 'message' => 'Cập nhật đơn hàng thất bại'];
+    }
+
+    public function destroy($id) {
+        if ($this->orderModel->delete($id)) {
+            return ['success' => true, 'message' => 'Đã xoá đơn hàng'];
+        }
+        return ['success' => false, 'message' => 'Xoá đơn hàng thất bại'];
+    }
 }
 

@@ -40,6 +40,17 @@ $stats['active_products'] = $result->fetch_assoc()['total'];
 $result = $db->query("SELECT COUNT(*) as total FROM reviews WHERE status = 'approved'");
 $stats['approved_reviews'] = $result->fetch_assoc()['total'];
 
+// Đơn hàng theo trạng thái
+$orderStatuses = ['PENDING', 'CONFIRMED', 'SHIPPING', 'COMPLETED', 'CANCELLED'];
+$stats['orders'] = [];
+foreach ($orderStatuses as $st) {
+    $stmt = $db->prepare("SELECT COUNT(*) as total FROM orders WHERE status = ?");
+    $stmt->bind_param("s", $st);
+    $stmt->execute();
+    $res = $stmt->get_result()->fetch_assoc();
+    $stats['orders'][$st] = $res['total'] ?? 0;
+}
+
 include BASE_PATH . '/includes/admin/header.php';
 ?>
 
@@ -166,6 +177,29 @@ include BASE_PATH . '/includes/admin/header.php';
     --gradient-start: #f97316;
     --gradient-end: #ea580c;
 }
+
+/* Orders mini section */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+.order-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+    transition: all .2s ease;
+}
+.order-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); }
+.order-card .label { font-size: 14px; font-weight: 600; color: #475569; display: flex; align-items: center; gap: 8px; }
+.order-card .value { font-size: 28px; font-weight: 800; margin-top: 8px; }
+.order-pending { color: #ea580c; }
+.order-confirmed { color: #16a34a; }
+.order-shipping { color: #0284c7; }
+.order-completed { color: #0f172a; }
+.order-cancelled { color: #dc2626; }
 
 /* Dashboard Section */
 .dashboard-section {
@@ -396,6 +430,33 @@ include BASE_PATH . '/includes/admin/header.php';
                     <i class="fas fa-check-circle stat-icon"></i>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Orders status quick view -->
+<div class="dashboard-section">
+    <div class="section-title"><i class="fas fa-receipt"></i> Đơn hàng theo trạng thái</div>
+    <div class="orders-grid">
+        <div class="order-card">
+            <div class="label"><i class="fas fa-hourglass-half text-warning"></i> Chờ xác nhận</div>
+            <div class="value order-pending"><?php echo $stats['orders']['PENDING'] ?? 0; ?></div>
+        </div>
+        <div class="order-card">
+            <div class="label"><i class="fas fa-check text-success"></i> Đã xác nhận</div>
+            <div class="value order-confirmed"><?php echo $stats['orders']['CONFIRMED'] ?? 0; ?></div>
+        </div>
+        <div class="order-card">
+            <div class="label"><i class="fas fa-truck-fast text-info"></i> Đang giao</div>
+            <div class="value order-shipping"><?php echo $stats['orders']['SHIPPING'] ?? 0; ?></div>
+        </div>
+        <div class="order-card">
+            <div class="label"><i class="fas fa-flag-checkered text-dark"></i> Hoàn thành</div>
+            <div class="value order-completed"><?php echo $stats['orders']['COMPLETED'] ?? 0; ?></div>
+        </div>
+        <div class="order-card">
+            <div class="label"><i class="fas fa-ban text-danger"></i> Đã huỷ</div>
+            <div class="value order-cancelled"><?php echo $stats['orders']['CANCELLED'] ?? 0; ?></div>
         </div>
     </div>
 </div>
