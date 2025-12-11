@@ -88,7 +88,7 @@
 
                 <!-- Mobile Menu Toggle - Chỉ hiện trên mobile -->
                 <div class="header-mobile-menu flex-shrink-0 lg:hidden">
-                    <button id="mobile-menu-toggle" class="text-2xl text-gray-700 hover:text-rose-500 transition">
+                    <button id="mobile-menu-toggle" type="button" class="text-2xl text-gray-700 hover:text-rose-500 transition relative z-50">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -113,6 +113,44 @@
     </div>
 
     <script>
+        // Mobile Menu Toggle - Khởi tạo ngay
+        (function() {
+            function initMobileMenuToggle() {
+                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuToggle && mobileMenu) {
+                    mobileMenuToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const isOpen = mobileMenu.classList.toggle('open');
+                        if (isOpen) {
+                            mobileMenu.classList.remove('hidden');
+                            document.body.classList.add('mobile-menu-open');
+                        } else {
+                            mobileMenu.classList.add('hidden');
+                            document.body.classList.remove('mobile-menu-open');
+                        }
+                        console.log('Mobile menu toggled, open:', isOpen);
+                    });
+                    console.log('Mobile menu toggle initialized');
+                } else {
+                    console.warn('Mobile menu elements not found:', {
+                        toggle: !!mobileMenuToggle,
+                        menu: !!mobileMenu
+                    });
+                }
+            }
+            
+            // Chạy ngay khi DOM sẵn sàng
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenuToggle);
+            } else {
+                initMobileMenuToggle();
+            }
+        })();
+        
         (function() {
             'use strict';
             

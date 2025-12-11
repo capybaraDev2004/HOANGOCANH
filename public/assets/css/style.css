@@ -1151,6 +1151,45 @@ footer > div:last-child {
     pointer-events: auto;
 }
 
+/* Mobile menu panel */
+#mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    z-index: 200;
+    display: none;
+}
+
+#mobile-menu.open {
+    display: block;
+}
+
+body.mobile-menu-open {
+    overflow: hidden;
+}
+
+/* Mobile Menu Toggle Button */
+.header-mobile-menu {
+    position: relative;
+    z-index: 50;
+}
+
+.header-mobile-menu button {
+    position: relative;
+    z-index: 51;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Header Title Link */
 .header-title-link {
     display: inline-block;
@@ -1442,6 +1481,12 @@ footer > div:last-child {
     
     .header-title {
         padding: 0 0.5rem !important;
+        /* Đảm bảo không che button toggle */
+        pointer-events: none;
+    }
+    
+    .header-title-link {
+        pointer-events: auto;
     }
     
     .header-title-main {
@@ -1450,6 +1495,15 @@ footer > div:last-child {
     
     .header-title-tagline {
         font-size: 0.7rem !important;
+    }
+    
+    /* Đảm bảo button toggle luôn có thể click */
+    .header-mobile-menu {
+        z-index: 100;
+    }
+    
+    .header-mobile-menu button {
+        z-index: 101;
     }
 }
 
