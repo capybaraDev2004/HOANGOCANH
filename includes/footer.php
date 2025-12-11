@@ -132,7 +132,7 @@
                     </h4>
                     <ul class="space-y-3 text-sm text-gray-700">
                             <?php if (!empty($footerAddress)): ?>
-                            <li class="flex items-start">
+                            <li class="flex items-start" style="align-items: center !important;">
                                 <div class="w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
                                     <i class="fas fa-map-marker-alt text-gray-500 text-lg"></i>
                                 </div>

@@ -20,7 +20,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Baloo+2:wght@600;700&family=Playfair+Display:wght@600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;500;600;700&family=Allura&family=Parisienne&family=Satisfy&family=Fleur+De+Leah&family=Love+Light&family=Beau+Rivage&family=Charm:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo CSS_URL; ?>/style.css">
@@ -47,14 +47,30 @@
 
                 <!-- Tiêu đề - Ở giữa -->
                 <div class="header-title flex-1 flex justify-center items-center px-4">
-                    <div class="flex flex-col leading-tight text-center">
-                        <span class="text-xl md:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-500" style="font-family: 'Baloo 2', 'Inter', sans-serif;">
-                            HOA NGỌC ANH
-                        </span>
-                        <span class="text-xs md:text-sm lg:text-base text-rose-500 font-semibold" style="font-family: 'Inter', sans-serif;">
-                            Hoa đẹp khởi nguồn cảm xúc
-                        </span>
-                    </div>
+                    <a href="<?php echo APP_URL; ?>" class="header-title-link group">
+                        <div class="flex flex-col items-center justify-center leading-tight text-center relative">
+                            <!-- Icon hoa trang trí -->
+                            <div class="header-title-icon-wrapper mb-1">
+                                <i class="fas fa-spa header-title-icon text-rose-400"></i>
+                            </div>
+                            
+                            <!-- Tiêu đề chính -->
+                            <h1 class="header-title-main text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold relative">
+                                <span class="header-title-text">HOA NGỌC ANH</span>
+                                <span class="header-title-glow"></span>
+                            </h1>
+                            
+                            <!-- Tagline -->
+                            <p class="header-title-tagline text-xs md:text-sm lg:text-base text-rose-500/90 font-medium mt-1 tracking-wide">
+                                <i class="fas fa-heart text-rose-400 text-[0.65em] mr-1.5"></i>
+                                <span>Hoa đẹp khởi nguồn cảm xúc</span>
+                                <i class="fas fa-heart text-rose-400 text-[0.65em] ml-1.5"></i>
+                            </p>
+                            
+                            <!-- Decorative line -->
+                            <div class="header-title-underline mt-1.5"></div>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Search Bar - Bên phải -->

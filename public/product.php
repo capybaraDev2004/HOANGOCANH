@@ -131,7 +131,7 @@ include '../includes/header.php';
 ?>
 
 <!-- Breadcrumb -->
-<div class="bg-rose-50 py-2">
+<div class="bg-rose-50">
     <div class="container mx-auto px-4">
         <div class="breadcrumb text-lg text-rose-600 font-semibold">
             <a href="<?php echo APP_URL; ?>" class="hover:text-rose-700">
